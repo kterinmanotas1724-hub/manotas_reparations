@@ -1,13 +1,9 @@
-import view.Vehiculosview;
+import view.Loginview;
 
-public class Main
-{
-    public static void main(String[] args)
-    {
-        // 1. Crear el objeto de la vista 🪟
-        Vehiculosview vista = new Vehiculosview();
-
-        // 2. Ejecutar el menú emergente 🚗
-        vista.menu();
+public class Main {
+    public static void main(String[] args) {
+        // Iniciar la aplicación desde la ventana de autenticación
+        Loginview login = new Loginview();
+        login.iniciarSesion();
     }
 }
