@@ -61,5 +61,47 @@ public class VehiculoDAO
         }
 
         return lista;
+    } // <-- Aquí cierra correctamente el método listar()
+
+    // ==================== MÉTODO ACTUALIZAR ====================
+    public boolean actualizar(Vehiculos vehiculo)
+    {
+        String sql = "UPDATE vehiculos SET placa = ?, marca = ?, modelo = ?, id_cliente = ? WHERE id_vehiculo = ?";
+
+        try (Connection con = Conexion.getConexion();
+             PreparedStatement ps = con.prepareStatement(sql))
+        {
+            ps.setString(1, vehiculo.getPlaca());
+            ps.setString(2, vehiculo.getMarca());
+            ps.setString(3, vehiculo.getModelo());
+            ps.setInt(4, vehiculo.getIdCliente());
+            ps.setInt(5, vehiculo.getIdVehiculo());
+
+            return ps.executeUpdate() > 0;
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    // ==================== MÉTODO ELIMINAR ====================
+    public boolean eliminar(int idVehiculo)
+    {
+        String sql = "DELETE FROM vehiculos WHERE id_vehiculo = ?";
+
+        try (Connection con = Conexion.getConexion();
+             PreparedStatement ps = con.prepareStatement(sql))
+        {
+            ps.setInt(1, idVehiculo);
+
+            return ps.executeUpdate() > 0;
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+            return false;
+        }
     }
 }
