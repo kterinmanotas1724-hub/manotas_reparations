@@ -7,7 +7,6 @@ import java.util.List;
 
 public class Vehiculosview
 {
-    // 🔗 Instancia del DAO para la base de datos
     private VehiculoDAO vehiculoDAO = new VehiculoDAO();
 
     // ==================== MÉTODO MOSTRAR ====================
@@ -72,6 +71,81 @@ public class Vehiculosview
         }
     }
 
+    // ==================== MÉTODO ACTUALIZAR ====================
+    public void actualizarVehiculo()
+    {
+        try
+        {
+            String idStr = JOptionPane.showInputDialog("Ingrese el ID del vehículo a actualizar:");
+            if (idStr == null || idStr.trim().isEmpty()) return;
+            int idVehiculo = Integer.parseInt(idStr);
+
+            String placa = JOptionPane.showInputDialog("Ingrese la nueva placa:");
+            if (placa == null || placa.trim().isEmpty()) return;
+
+            String marca = JOptionPane.showInputDialog("Ingrese la nueva marca:");
+            if (marca == null || marca.trim().isEmpty()) return;
+
+            String modelo = JOptionPane.showInputDialog("Ingrese el nuevo modelo:");
+            if (modelo == null || modelo.trim().isEmpty()) return;
+
+            String idClienteStr = JOptionPane.showInputDialog("Ingrese el nuevo ID del cliente propietario:");
+            if (idClienteStr == null || idClienteStr.trim().isEmpty()) return;
+            int idCliente = Integer.parseInt(idClienteStr);
+
+            Vehiculos vehiculo = new Vehiculos(idVehiculo, placa, marca, modelo, idCliente);
+            boolean exito = vehiculoDAO.actualizar(vehiculo);
+
+            if (exito)
+            {
+                JOptionPane.showMessageDialog(null, "✅ ¡Vehículo actualizado exitosamente!");
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(null, "❌ Error al actualizar el vehículo.");
+            }
+        }
+        catch (NumberFormatException e)
+        {
+            JOptionPane.showMessageDialog(null, "⚠️ Los campos de ID deben ser números enteros válidos.");
+        }
+    }
+
+    // ==================== MÉTODO ELIMINAR ====================
+    public void eliminarVehiculo()
+    {
+        try
+        {
+            String idStr = JOptionPane.showInputDialog("Ingrese el ID del vehículo a eliminar:");
+            if (idStr == null || idStr.trim().isEmpty()) return;
+            int idVehiculo = Integer.parseInt(idStr);
+
+            int confirmacion = JOptionPane.showConfirmDialog(
+                    null,
+                    "¿Está seguro de eliminar el vehículo con ID: " + idVehiculo + "?",
+                    "Confirmar eliminación",
+                    JOptionPane.YES_NO_OPTION
+            );
+
+            if (confirmacion == JOptionPane.YES_OPTION)
+            {
+                boolean exito = vehiculoDAO.eliminar(idVehiculo);
+                if (exito)
+                {
+                    JOptionPane.showMessageDialog(null, "🗑️ ¡Vehículo eliminado exitosamente!");
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(null, "❌ Error al eliminar el vehículo.");
+                }
+            }
+        }
+        catch (NumberFormatException e)
+        {
+            JOptionPane.showMessageDialog(null, "⚠️ El ID debe ser un número entero válido.");
+        }
+    }
+
     // ==================== MENÚ PRINCIPAL ====================
     public void menu()
     {
@@ -84,7 +158,9 @@ public class Vehiculosview
                     "=== 🚗 MENÚ VEHÍCULOS ===\n" +
                             "1. Mostrar vehículos\n" +
                             "2. Agregar vehículo\n" +
-                            "3. Salir\n\n" +
+                            "3. Actualizar vehículo\n" +
+                            "4. Eliminar vehículo\n" +
+                            "5. Volver al menú principal\n\n" +
                             "Seleccione una opción:",
                     "Menú Vehículos",
                     JOptionPane.QUESTION_MESSAGE
@@ -108,6 +184,12 @@ public class Vehiculosview
                         agregarVehiculo();
                         break;
                     case 3:
+                        actualizarVehiculo();
+                        break;
+                    case 4:
+                        eliminarVehiculo();
+                        break;
+                    case 5:
                         salir = true;
                         break;
                     default:
@@ -121,7 +203,6 @@ public class Vehiculosview
         }
     }
 
-    // ==================== MÉTODO MAIN (EJECUCIÓN DIRECTA) ====================
     public static void main(String[] args)
     {
         Vehiculosview vehiculosview = new Vehiculosview();
