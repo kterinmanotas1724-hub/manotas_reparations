@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Principal - Manotas Reparations</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f3f4f6;
+            display: flex;
+            height: 100vh;
+        }
+
+        /* Sidebar / Menú Lateral */
+        .sidebar {
+            width: 260px;
+            background-color: #1f2937;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 20px;
+        }
+
+        .sidebar-header h2 {
+            font-size: 20px;
+            margin-bottom: 30px;
+            color: #60a5fa;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+            flex-grow: 1;
+        }
+
+        .sidebar-menu li {
+            margin-bottom: 15px;
+        }
+
+        .sidebar-menu a {
+            color: #d1d5db;
+            text-decoration: none;
+            font-size: 16px;
+            display: block;
+            padding: 10px 15px;
+            border-radius: 6px;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .sidebar-menu a:hover {
+            background-color: #374151;
+            color: white;
+        }
+
+        .sidebar-footer a {
+            color: #ef4444;
+            text-decoration: none;
+            font-weight: 600;
+            display: block;
+            padding: 10px 15px;
+            border-radius: 6px;
+            transition: background 0.3s;
+        }
+
+        .sidebar-footer a:hover {
+            background-color: rgba(239, 68, 68, 0.1);
+        }
+
+        /* Contenido Principal */
+        .main-content {
+            flex-grow: 1;
+            padding: 40px;
+            overflow-y: auto;
+        }
+
+        .header-top {
+            margin-bottom: 30px;
+        }
+
+        .header-top h1 {
+            color: #1f2937;
+            font-size: 28px;
+        }
+
+        .header-top p {
+            color: #6b7280;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            border-left: 5px solid #2563eb;
+        }
+
+        .card h3 {
+            color: #374151;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .card p {
+            color: #6b7280;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Menú Lateral -->
+<div class="sidebar">
+    <div class="sidebar-header">
+        <h2>🛠️ Manotas Reparations</h2>
+        <ul class="sidebar-menu">
+            <li><a href="dashboard.html">🏠 Inicio / Dashboard</a></li>
+            <li><a href="clientes.html">👥 Gestión de Clientes</a></li>
+            <li><a href="vehiculos.html">🚗 Gestión de Vehículos</a></li>
+            <li><a href="#">🔧 Órdenes de Reparación</a></li>
+        </ul>
+    </div>
+    <div class="sidebar-footer">
+        <a href="login.html">🚪 Cerrar Sesión</a>
+    </div>
+</div>
+
+<!-- Contenido del Panel -->
+<div class="main-content">
+    <div class="header-top">
+        <h1>Bienvenido al Sistema</h1>
+        <p>Panel de control administrativo del taller automotriz</p>
+    </div>
+
+    <div class="cards-grid">
+        <div class="card">
+            <h3>Clientes Registrados</h3>
+            <p>Administre la base de datos de clientes y propietarios.</p>
+        </div>
+        <div class="card" style="border-left-color: #10b981;">
+            <h3>Vehículos en Taller</h3>
+            <p>Control de placas, marcas, modelos y asignaciones.</p>
+        </div>
+        <div class="card" style="border-left-color: #f59e0b;">
+            <h3>Reparaciones Activas</h3>
+            <p>Seguimiento de órdenes de servicio y estados de trabajo.</p>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
