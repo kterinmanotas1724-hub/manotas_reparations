@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Clientes - Manotas Reparations</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f3f4f6;
+            display: flex;
+            height: 100vh;
+        }
+
+        /* Menú Lateral */
+        .sidebar {
+            width: 260px;
+            background-color: #1f2937;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 20px;
+        }
+
+        .sidebar-header h2 {
+            font-size: 20px;
+            margin-bottom: 30px;
+            color: #60a5fa;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+            flex-grow: 1;
+        }
+
+        .sidebar-menu li {
+            margin-bottom: 15px;
+        }
+
+        .sidebar-menu a {
+            color: #d1d5db;
+            text-decoration: none;
+            font-size: 16px;
+            display: block;
+            padding: 10px 15px;
+            border-radius: 6px;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .sidebar-menu a:hover, .sidebar-menu a.active {
+            background-color: #374151;
+            color: white;
+        }
+
+        .sidebar-footer a {
+            color: #ef4444;
+            text-decoration: none;
+            font-weight: 600;
+            display: block;
+            padding: 10px 15px;
+            border-radius: 6px;
+            transition: background 0.3s;
+        }
+
+        .sidebar-footer a:hover {
+            background-color: rgba(239, 68, 68, 0.1);
+        }
+
+        /* Contenido Principal */
+        .main-content {
+            flex-grow: 1;
+            padding: 40px;
+            overflow-y: auto;
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .header-top h1 {
+            color: #1f2937;
+            font-size: 28px;
+        }
+
+        .btn-primary {
+            background-color: #2563eb;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+            text-decoration: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #1d4ed8;
+        }
+
+        /* Tabla de Datos */
+        .table-container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        th, td {
+            padding: 15px 20px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        th {
+            background-color: #f9fafb;
+            color: #374151;
+            font-weight: 600;
+        }
+
+        td {
+            color: #4b5563;
+        }
+
+        tr:hover {
+            background-color: #f9fafb;
+        }
+
+        .actions-btn {
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 13px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-right: 5px;
+        }
+
+        .btn-edit {
+            background-color: #e0e7ff;
+            color: #3730a3;
+        }
+
+        .btn-edit:hover {
+            background-color: #c7d2fe;
+        }
+
+        .btn-delete {
+            background-color: #fee2e2;
+            color: #991b1b;
+        }
+
+        .btn-delete:hover {
+            background-color: #fecaca;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Menú Lateral -->
+<div class="sidebar">
+    <div class="sidebar-header">
+        <h2>🛠️ Manotas Reparations</h2>
+        <ul class="sidebar-menu">
+            <li><a href="dashboard.html">🏠 Inicio / Dashboard</a></li>
+            <li><a href="clientes.html" class="active">👥 Gestión de Clientes</a></li>
+            <li><a href="#">🚗 Gestión de Vehículos</a></li>
+            <li><a href="#">🔧 Órdenes de Reparación</a></li>
+        </ul>
+    </div>
+    <div class="sidebar-footer">
+        <a href="login.html">🚪 Cerrar Sesión</a>
+    </div>
+</div>
+
+<!-- Contenido del Panel -->
+<div class="main-content">
+    <div class="header-top">
+        <div>
+            <h1>Gestión de Clientes</h1>
+            <p style="color: #6b7280;">Listado de propietarios registrados en el taller</p>
+        </div>
+        <a href="#" class="btn-primary">+ Nuevo Cliente</a>
+    </div>
+
+    <div class="table-container">
+        <table>
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre Completo</th>
+                <th>Teléfono</th>
+                <th>Correo Electrónico</th>
+                <th>Acciones</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>1</td>
+                <td>Carlos Pérez</td>
+                <td>3001234567</td>
+                <td>carlos@email.com</td>
+                <td>
+                    <a href="#" class="actions-btn btn-edit">Editar</a>
+                    <a href="#" class="actions-btn btn-delete">Eliminar</a>
+                </td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>María Gómez</td>
+                <td>3109876543</td>
+                <td>maria@email.com</td>
+                <td>
+                    <a href="#" class="actions-btn btn-edit">Editar</a>
+                    <a href="#" class="actions-btn btn-delete">Eliminar</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>
