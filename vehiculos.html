@@ -5,173 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestión de Vehículos - Manotas Reparations</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background-color: #f3f4f6;
-            display: flex;
-            height: 100vh;
-        }
-
-        /* Menú Lateral */
-        .sidebar {
-            width: 260px;
-            background-color: #1f2937;
-            color: white;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            padding: 20px;
-        }
-
-        .sidebar-header h2 {
-            font-size: 20px;
-            margin-bottom: 30px;
-            color: #60a5fa;
-        }
-
-        .sidebar-menu {
-            list-style: none;
-            flex-grow: 1;
-        }
-
-        .sidebar-menu li {
-            margin-bottom: 15px;
-        }
-
-        .sidebar-menu a {
-            color: #d1d5db;
-            text-decoration: none;
-            font-size: 16px;
-            display: block;
-            padding: 10px 15px;
-            border-radius: 6px;
-            transition: background 0.3s, color 0.3s;
-        }
-
-        .sidebar-menu a:hover, .sidebar-menu a.active {
-            background-color: #374151;
-            color: white;
-        }
-
-        .sidebar-footer a {
-            color: #ef4444;
-            text-decoration: none;
-            font-weight: 600;
-            display: block;
-            padding: 10px 15px;
-            border-radius: 6px;
-            transition: background 0.3s;
-        }
-
-        .sidebar-footer a:hover {
-            background-color: rgba(239, 68, 68, 0.1);
-        }
-
-        /* Contenido Principal */
-        .main-content {
-            flex-grow: 1;
-            padding: 40px;
-            overflow-y: auto;
-        }
-
-        .header-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 30px;
-        }
-
-        .header-top h1 {
-            color: #1f2937;
-            font-size: 28px;
-        }
-
-        .btn-primary {
-            background-color: #2563eb;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 6px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background 0.3s;
-            text-decoration: none;
-        }
-
-        .btn-primary:hover {
-            background-color: #1d4ed8;
-        }
-
-        /* Tabla de Datos */
-        .table-container {
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            overflow: hidden;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            text-align: left;
-        }
-
-        th, td {
-            padding: 15px 20px;
-            border-bottom: 1px solid #e5e7eb;
-        }
-
-        th {
-            background-color: #f9fafb;
-            color: #374151;
-            font-weight: 600;
-        }
-
-        td {
-            color: #4b5563;
-        }
-
-        tr:hover {
-            background-color: #f9fafb;
-        }
-
-        .actions-btn {
-            padding: 6px 12px;
-            border-radius: 4px;
-            font-size: 13px;
-            text-decoration: none;
-            font-weight: 600;
-            margin-right: 5px;
-        }
-
-        .btn-edit {
-            background-color: #e0e7ff;
-            color: #3730a3;
-        }
-
-        .btn-edit:hover {
-            background-color: #c7d2fe;
-        }
-
-        .btn-delete {
-            background-color: #fee2e2;
-            color: #991b1b;
-        }
-
-        .btn-delete:hover {
-            background-color: #fecaca;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #f3f4f6; display: flex; height: 100vh; }
+        .sidebar { width: 260px; background-color: #1f2937; color: white; display: flex; flex-direction: column; justify-content: space-between; padding: 20px; }
+        .sidebar-header h2 { font-size: 20px; margin-bottom: 30px; color: #60a5fa; }
+        .sidebar-menu { list-style: none; flex-grow: 1; }
+        .sidebar-menu li { margin-bottom: 15px; }
+        .sidebar-menu a { color: #d1d5db; text-decoration: none; font-size: 16px; display: block; padding: 10px 15px; border-radius: 6px; transition: background 0.3s, color 0.3s; }
+        .sidebar-menu a:hover, .sidebar-menu a.active { background-color: #374151; color: white; }
+        .sidebar-footer a { color: #ef4444; text-decoration: none; font-weight: 600; display: block; padding: 10px 15px; border-radius: 6px; transition: background 0.3s; }
+        .sidebar-footer a:hover { background-color: rgba(239, 68, 68, 0.1); }
+        .main-content { flex-grow: 1; padding: 40px; overflow-y: auto; }
+        .header-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
+        .header-top h1 { color: #1f2937; font-size: 28px; }
+        .btn-primary { background-color: #2563eb; color: white; border: none; padding: 10px 20px; border-radius: 6px; font-weight: 600; cursor: pointer; }
+        .btn-primary:hover { background-color: #1d4ed8; }
+        .table-container { background: white; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); overflow: hidden; }
+        table { width: 100%; border-collapse: collapse; text-align: left; }
+        th, td { padding: 15px 20px; border-bottom: 1px solid #e5e7eb; }
+        th { background-color: #f9fafb; color: #374151; font-weight: 600; }
+        td { color: #4b5563; }
+        tr:hover { background-color: #f9fafb; }
+        .actions-btn { padding: 6px 12px; border-radius: 4px; font-size: 13px; border: none; cursor: pointer; font-weight: 600; margin-right: 5px; }
+        .btn-edit { background-color: #e0e7ff; color: #3730a3; }
+        .btn-delete { background-color: #fee2e2; color: #991b1b; }
+        .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); justify-content: center; align-items: center; }
+        .modal-content { background: white; padding: 30px; border-radius: 10px; width: 100%; max-width: 450px; }
+        .modal-content h2 { margin-bottom: 20px; color: #1f2937; }
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; margin-bottom: 5px; font-weight: 600; color: #374151; font-size: 14px; }
+        .form-group input, .form-group select { width: 100%; padding: 10px; border: 1px solid #d1d5db; border-radius: 6px; background: white; }
+        .modal-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px; }
+        .btn-cancel { background: #e5e7eb; color: #374151; border: none; padding: 10px 18px; border-radius: 6px; cursor: pointer; font-weight: 600; }
     </style>
 </head>
 <body>
 
-<!-- Menú Lateral -->
 <div class="sidebar">
     <div class="sidebar-header">
         <h2>🛠️ Manotas Reparations</h2>
@@ -179,22 +48,21 @@
             <li><a href="dashboard.html">🏠 Inicio / Dashboard</a></li>
             <li><a href="clientes.html">👥 Gestión de Clientes</a></li>
             <li><a href="vehiculos.html" class="active">🚗 Gestión de Vehículos</a></li>
-            <li><a href="#">🔧 Órdenes de Reparación</a></li>
+            <li><a href="#" onclick="alert('Módulo en desarrollo')">🔧 Órdenes de Reparación</a></li>
         </ul>
     </div>
     <div class="sidebar-footer">
-        <a href="login.html">🚪 Cerrar Sesión</a>
+        <a href="login.html" onclick="sessionStorage.clear()">🚪 Cerrar Sesión</a>
     </div>
 </div>
 
-<!-- Contenido del Panel -->
 <div class="main-content">
     <div class="header-top">
         <div>
             <h1>Gestión de Vehículos</h1>
             <p style="color: #6b7280;">Control de placas, marcas, modelos y asignaciones del taller</p>
         </div>
-        <a href="#" class="btn-primary">+ Nuevo Vehículo</a>
+        <button class="btn-primary" onclick="abrirModalNuevo()">+ Nuevo Vehículo</button>
     </div>
 
     <div class="table-container">
@@ -205,37 +73,149 @@
                 <th>Placa</th>
                 <th>Marca</th>
                 <th>Modelo</th>
-                <th>ID Cliente Propietario</th>
+                <th>Propietario</th>
                 <th>Acciones</th>
             </tr>
             </thead>
-            <tbody>
-            <tr>
-                <td>1</td>
-                <td>ABC-123</td>
-                <td>Chevrolet</td>
-                <td>Spark GT</td>
-                <td>1</td>
-                <td>
-                    <a href="#" class="actions-btn btn-edit">Editar</a>
-                    <a href="#" class="actions-btn btn-delete">Eliminar</a>
-                </td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>XYZ-789</td>
-                <td>Renault</td>
-                <td>Logan</td>
-                <td>2</td>
-                <td>
-                    <a href="#" class="actions-btn btn-edit">Editar</a>
-                    <a href="#" class="actions-btn btn-delete">Eliminar</a>
-                </td>
-            </tr>
-            </tbody>
+            <tbody id="tablaVehiculos"></tbody>
         </table>
     </div>
 </div>
 
+<div id="modalVehiculo" class="modal">
+    <div class="modal-content">
+        <h2 id="modalTitulo">Nuevo Vehículo</h2>
+        <form id="formVehiculo">
+            <input type="hidden" id="idVehiculo">
+            <div class="form-group">
+                <label>Placa</label>
+                <input type="text" id="placa" required>
+            </div>
+            <div class="form-group">
+                <label>Marca</label>
+                <input type="text" id="marca" required>
+            </div>
+            <div class="form-group">
+                <label>Modelo</label>
+                <input type="text" id="modelo" required>
+            </div>
+            <div class="form-group">
+                <label>Cliente Propietario</label>
+                <select id="idCliente" required></select>
+            </div>
+            <div class="modal-actions">
+                <button type="button" class="btn-cancel" onclick="cerrarModal()">Cancelar</button>
+                <button type="submit" class="btn-primary">Guardar</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    let listaVehiculos = [];
+    let mapaClientes = {};
+
+    async function cargarClientesSelect() {
+        const res = await fetch('/api/clientes');
+        const clientes = await res.json();
+        const select = document.getElementById('idCliente');
+        select.innerHTML = '<option value="">-- Seleccione un cliente --</option>';
+        mapaClientes = {};
+
+        clientes.forEach(c => {
+            mapaClientes[c.id_cliente] = c.nombres + ' ' + c.apellidos;
+            select.innerHTML += `<option value="${c.id_cliente}">${c.id_cliente} - ${c.nombres} ${c.apellidos}</option>`;
+        });
+    }
+
+    async function cargarVehiculos() {
+        await cargarClientesSelect();
+        const res = await fetch('/api/vehiculos');
+        listaVehiculos = await res.json();
+        const tbody = document.getElementById('tablaVehiculos');
+        tbody.innerHTML = '';
+
+        if (listaVehiculos.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;">No hay vehículos registrados.</td></tr>';
+            return;
+        }
+
+        listaVehiculos.forEach(v => {
+            const nombrePropietario = mapaClientes[v.idCliente] || ('ID ' + v.idCliente);
+            tbody.innerHTML += `
+                <tr>
+                    <td>${v.idVehiculo}</td>
+                    <td>${v.placa}</td>
+                    <td>${v.marca}</td>
+                    <td>${v.modelo}</td>
+                    <td>${nombrePropietario}</td>
+                    <td>
+                        <button class="actions-btn btn-edit" onclick="abrirModalEditar(${v.idVehiculo})">Editar</button>
+                        <button class="actions-btn btn-delete" onclick="eliminarVehiculo(${v.idVehiculo})">Eliminar</button>
+                    </td>
+                </tr>
+            `;
+        });
+    }
+
+    function abrirModalNuevo() {
+        document.getElementById('modalTitulo').textContent = 'Nuevo Vehículo';
+        document.getElementById('formVehiculo').reset();
+        document.getElementById('idVehiculo').value = '';
+        document.getElementById('modalVehiculo').style.display = 'flex';
+    }
+
+    function abrirModalEditar(id) {
+        const v = listaVehiculos.find(x => x.idVehiculo === id);
+        if (!v) return;
+        document.getElementById('modalTitulo').textContent = 'Editar Vehículo';
+        document.getElementById('idVehiculo').value = v.idVehiculo;
+        document.getElementById('placa').value = v.placa;
+        document.getElementById('marca').value = v.marca;
+        document.getElementById('modelo').value = v.modelo;
+        document.getElementById('idCliente').value = v.idCliente;
+        document.getElementById('modalVehiculo').style.display = 'flex';
+    }
+
+    function cerrarModal() {
+        document.getElementById('modalVehiculo').style.display = 'none';
+    }
+
+    document.getElementById('formVehiculo').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const id = document.getElementById('idVehiculo').value;
+        const datos = new URLSearchParams({
+            idVehiculo: id,
+            placa: document.getElementById('placa').value,
+            marca: document.getElementById('marca').value,
+            modelo: document.getElementById('modelo').value,
+            idCliente: document.getElementById('idCliente').value
+        });
+
+        const res = await fetch('/api/vehiculos', {
+            method: id ? 'PUT' : 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: datos
+        });
+
+        const data = await res.json();
+        if (data.ok) {
+            cerrarModal();
+            cargarVehiculos();
+        } else {
+            alert('Error al guardar el vehículo.');
+        }
+    });
+
+    async function eliminarVehiculo(id) {
+        if (!confirm('¿Está seguro de eliminar el vehículo ID ' + id + '?')) return;
+        const res = await fetch('/api/vehiculos?id=' + id, { method: 'DELETE' });
+        const data = await res.json();
+        if (data.ok) cargarVehiculos();
+        else alert('Error al eliminar el vehículo.');
+    }
+
+    cargarVehiculos();
+</script>
 </body>
 </html>

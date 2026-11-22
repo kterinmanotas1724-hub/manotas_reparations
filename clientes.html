@@ -5,196 +5,65 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestión de Clientes - Manotas Reparations</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background-color: #f3f4f6;
-            display: flex;
-            height: 100vh;
-        }
-
-        /* Menú Lateral */
-        .sidebar {
-            width: 260px;
-            background-color: #1f2937;
-            color: white;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            padding: 20px;
-        }
-
-        .sidebar-header h2 {
-            font-size: 20px;
-            margin-bottom: 30px;
-            color: #60a5fa;
-        }
-
-        .sidebar-menu {
-            list-style: none;
-            flex-grow: 1;
-        }
-
-        .sidebar-menu li {
-            margin-bottom: 15px;
-        }
-
-        .sidebar-menu a {
-            color: #d1d5db;
-            text-decoration: none;
-            font-size: 16px;
-            display: block;
-            padding: 10px 15px;
-            border-radius: 6px;
-            transition: background 0.3s, color 0.3s;
-        }
-
-        .sidebar-menu a:hover, .sidebar-menu a.active {
-            background-color: #374151;
-            color: white;
-        }
-
-        .sidebar-footer a {
-            color: #ef4444;
-            text-decoration: none;
-            font-weight: 600;
-            display: block;
-            padding: 10px 15px;
-            border-radius: 6px;
-            transition: background 0.3s;
-        }
-
-        .sidebar-footer a:hover {
-            background-color: rgba(239, 68, 68, 0.1);
-        }
-
-        /* Contenido Principal */
-        .main-content {
-            flex-grow: 1;
-            padding: 40px;
-            overflow-y: auto;
-        }
-
-        .header-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 30px;
-        }
-
-        .header-top h1 {
-            color: #1f2937;
-            font-size: 28px;
-        }
-
-        .btn-primary {
-            background-color: #2563eb;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 6px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background 0.3s;
-            text-decoration: none;
-        }
-
-        .btn-primary:hover {
-            background-color: #1d4ed8;
-        }
-
-        /* Tabla de Datos */
-        .table-container {
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            overflow: hidden;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            text-align: left;
-        }
-
-        th, td {
-            padding: 15px 20px;
-            border-bottom: 1px solid #e5e7eb;
-        }
-
-        th {
-            background-color: #f9fafb;
-            color: #374151;
-            font-weight: 600;
-        }
-
-        td {
-            color: #4b5563;
-        }
-
-        tr:hover {
-            background-color: #f9fafb;
-        }
-
-        .actions-btn {
-            padding: 6px 12px;
-            border-radius: 4px;
-            font-size: 13px;
-            text-decoration: none;
-            font-weight: 600;
-            margin-right: 5px;
-        }
-
-        .btn-edit {
-            background-color: #e0e7ff;
-            color: #3730a3;
-        }
-
-        .btn-edit:hover {
-            background-color: #c7d2fe;
-        }
-
-        .btn-delete {
-            background-color: #fee2e2;
-            color: #991b1b;
-        }
-
-        .btn-delete:hover {
-            background-color: #fecaca;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #f3f4f6; display: flex; height: 100vh; }
+        .sidebar { width: 260px; background-color: #1f2937; color: white; display: flex; flex-direction: column; justify-content: space-between; padding: 20px; }
+        .sidebar-header h2 { font-size: 20px; margin-bottom: 30px; color: #60a5fa; }
+        .sidebar-menu { list-style: none; flex-grow: 1; }
+        .sidebar-menu li { margin-bottom: 15px; }
+        .sidebar-menu a { color: #d1d5db; text-decoration: none; font-size: 16px; display: block; padding: 10px 15px; border-radius: 6px; transition: background 0.3s, color 0.3s; }
+        .sidebar-menu a:hover, .sidebar-menu a.active { background-color: #374151; color: white; }
+        .sidebar-footer a { color: #ef4444; text-decoration: none; font-weight: 600; display: block; padding: 10px 15px; border-radius: 6px; transition: background 0.3s; }
+        .sidebar-footer a:hover { background-color: rgba(239, 68, 68, 0.1); }
+        .main-content { flex-grow: 1; padding: 40px; overflow-y: auto; }
+        .header-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
+        .header-top h1 { color: #1f2937; font-size: 28px; }
+        .btn-primary { background-color: #2563eb; color: white; border: none; padding: 10px 20px; border-radius: 6px; font-weight: 600; cursor: pointer; }
+        .btn-primary:hover { background-color: #1d4ed8; }
+        .table-container { background: white; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); overflow: hidden; }
+        table { width: 100%; border-collapse: collapse; text-align: left; }
+        th, td { padding: 15px 20px; border-bottom: 1px solid #e5e7eb; }
+        th { background-color: #f9fafb; color: #374151; font-weight: 600; }
+        td { color: #4b5563; }
+        tr:hover { background-color: #f9fafb; }
+        .actions-btn { padding: 6px 12px; border-radius: 4px; font-size: 13px; border: none; cursor: pointer; font-weight: 600; margin-right: 5px; }
+        .btn-edit { background-color: #e0e7ff; color: #3730a3; }
+        .btn-delete { background-color: #fee2e2; color: #991b1b; }
+        /* Modal */
+        .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); justify-content: center; align-items: center; }
+        .modal-content { background: white; padding: 30px; border-radius: 10px; width: 100%; max-width: 450px; }
+        .modal-content h2 { margin-bottom: 20px; color: #1f2937; }
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; margin-bottom: 5px; font-weight: 600; color: #374151; font-size: 14px; }
+        .form-group input { width: 100%; padding: 10px; border: 1px solid #d1d5db; border-radius: 6px; }
+        .modal-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px; }
+        .btn-cancel { background: #e5e7eb; color: #374151; border: none; padding: 10px 18px; border-radius: 6px; cursor: pointer; font-weight: 600; }
     </style>
 </head>
 <body>
 
-<!-- Menú Lateral -->
 <div class="sidebar">
     <div class="sidebar-header">
         <h2>🛠️ Manotas Reparations</h2>
         <ul class="sidebar-menu">
             <li><a href="dashboard.html">🏠 Inicio / Dashboard</a></li>
             <li><a href="clientes.html" class="active">👥 Gestión de Clientes</a></li>
-            <li><a href="#">🚗 Gestión de Vehículos</a></li>
-            <li><a href="#">🔧 Órdenes de Reparación</a></li>
+            <li><a href="vehiculos.html">🚗 Gestión de Vehículos</a></li>
+            <li><a href="#" onclick="alert('Módulo en desarrollo')">🔧 Órdenes de Reparación</a></li>
         </ul>
     </div>
     <div class="sidebar-footer">
-        <a href="login.html">🚪 Cerrar Sesión</a>
+        <a href="login.html" onclick="sessionStorage.clear()">🚪 Cerrar Sesión</a>
     </div>
 </div>
 
-<!-- Contenido del Panel -->
 <div class="main-content">
     <div class="header-top">
         <div>
             <h1>Gestión de Clientes</h1>
             <p style="color: #6b7280;">Listado de propietarios registrados en el taller</p>
         </div>
-        <a href="#" class="btn-primary">+ Nuevo Cliente</a>
+        <button class="btn-primary" onclick="abrirModalNuevo()">+ Nuevo Cliente</button>
     </div>
 
     <div class="table-container">
@@ -205,34 +74,139 @@
                 <th>Nombre Completo</th>
                 <th>Teléfono</th>
                 <th>Correo Electrónico</th>
+                <th>Dirección</th>
                 <th>Acciones</th>
             </tr>
             </thead>
-            <tbody>
-            <tr>
-                <td>1</td>
-                <td>Carlos Pérez</td>
-                <td>3001234567</td>
-                <td>carlos@email.com</td>
-                <td>
-                    <a href="#" class="actions-btn btn-edit">Editar</a>
-                    <a href="#" class="actions-btn btn-delete">Eliminar</a>
-                </td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>María Gómez</td>
-                <td>3109876543</td>
-                <td>maria@email.com</td>
-                <td>
-                    <a href="#" class="actions-btn btn-edit">Editar</a>
-                    <a href="#" class="actions-btn btn-delete">Eliminar</a>
-                </td>
-            </tr>
-            </tbody>
+            <tbody id="tablaClientes"></tbody>
         </table>
     </div>
 </div>
 
+<div id="modalCliente" class="modal">
+    <div class="modal-content">
+        <h2 id="modalTitulo">Nuevo Cliente</h2>
+        <form id="formCliente">
+            <input type="hidden" id="id_cliente">
+            <div class="form-group">
+                <label>Nombres</label>
+                <input type="text" id="nombres" required>
+            </div>
+            <div class="form-group">
+                <label>Apellidos</label>
+                <input type="text" id="apellidos" required>
+            </div>
+            <div class="form-group">
+                <label>Teléfono</label>
+                <input type="text" id="telefono" required>
+            </div>
+            <div class="form-group">
+                <label>Correo Electrónico</label>
+                <input type="email" id="correo" required>
+            </div>
+            <div class="form-group">
+                <label>Dirección</label>
+                <input type="text" id="direccion" required>
+            </div>
+            <div class="modal-actions">
+                <button type="button" class="btn-cancel" onclick="cerrarModal()">Cancelar</button>
+                <button type="submit" class="btn-primary">Guardar</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    let listaClientes = [];
+
+    async function cargarClientes() {
+        const res = await fetch('/api/clientes');
+        listaClientes = await res.json();
+        const tbody = document.getElementById('tablaClientes');
+        tbody.innerHTML = '';
+
+        if (listaClientes.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;">No hay clientes registrados.</td></tr>';
+            return;
+        }
+
+        listaClientes.forEach(c => {
+            tbody.innerHTML += `
+                <tr>
+                    <td>${c.id_cliente}</td>
+                    <td>${c.nombres} ${c.apellidos}</td>
+                    <td>${c.telefono}</td>
+                    <td>${c.correo}</td>
+                    <td>${c.direccion}</td>
+                    <td>
+                        <button class="actions-btn btn-edit" onclick="abrirModalEditar(${c.id_cliente})">Editar</button>
+                        <button class="actions-btn btn-delete" onclick="eliminarCliente(${c.id_cliente})">Eliminar</button>
+                    </td>
+                </tr>
+            `;
+        });
+    }
+
+    function abrirModalNuevo() {
+        document.getElementById('modalTitulo').textContent = 'Nuevo Cliente';
+        document.getElementById('formCliente').reset();
+        document.getElementById('id_cliente').value = '';
+        document.getElementById('modalCliente').style.display = 'flex';
+    }
+
+    function abrirModalEditar(id) {
+        const c = listaClientes.find(x => x.id_cliente === id);
+        if (!c) return;
+        document.getElementById('modalTitulo').textContent = 'Editar Cliente';
+        document.getElementById('id_cliente').value = c.id_cliente;
+        document.getElementById('nombres').value = c.nombres;
+        document.getElementById('apellidos').value = c.apellidos;
+        document.getElementById('telefono').value = c.telefono;
+        document.getElementById('correo').value = c.correo;
+        document.getElementById('direccion').value = c.direccion;
+        document.getElementById('modalCliente').style.display = 'flex';
+    }
+
+    function cerrarModal() {
+        document.getElementById('modalCliente').style.display = 'none';
+    }
+
+    document.getElementById('formCliente').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const id = document.getElementById('id_cliente').value;
+        const datos = new URLSearchParams({
+            id_cliente: id,
+            nombres: document.getElementById('nombres').value,
+            apellidos: document.getElementById('apellidos').value,
+            telefono: document.getElementById('telefono').value,
+            correo: document.getElementById('correo').value,
+            direccion: document.getElementById('direccion').value
+        });
+
+        const res = await fetch('/api/clientes', {
+            method: id ? 'PUT' : 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: datos
+        });
+
+        const data = await res.json();
+        if (data.ok) {
+            cerrarModal();
+            cargarClientes();
+        } else {
+            alert('Error al guardar el cliente.');
+        }
+    });
+
+    async function eliminarCliente(id) {
+        if (!confirm('¿Está seguro de eliminar el cliente ID ' + id + '?')) return;
+        const res = await fetch('/api/clientes?id=' + id, { method: 'DELETE' });
+        const data = await res.json();
+        if (data.ok) cargarClientes();
+        else alert('No se pudo eliminar (verifique que no tenga vehículos asociados).');
+    }
+
+    cargarClientes();
+</script>
 </body>
 </html>

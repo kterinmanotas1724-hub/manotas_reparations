@@ -5,94 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Manotas Reparations</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background: linear-gradient(135deg, #1f2937, #111827);
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .login-card {
-            background: #ffffff;
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-            width: 100%;
-            max-width: 400px;
-            text-align: center;
-        }
-
-        .login-card h2 {
-            color: #1f2937;
-            margin-bottom: 10px;
-            font-size: 24px;
-        }
-
-        .login-card p {
-            color: #6b7280;
-            margin-bottom: 30px;
-            font-size: 14px;
-        }
-
-        .input-group {
-            margin-bottom: 20px;
-            text-align: left;
-        }
-
-        .input-group label {
-            display: block;
-            margin-bottom: 8px;
-            color: #374151;
-            font-weight: 600;
-            font-size: 14px;
-        }
-
-        .input-group input {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #d1d5db;
-            border-radius: 6px;
-            font-size: 14px;
-            outline: none;
-            transition: border-color 0.3px;
-        }
-
-        .input-group input:focus {
-            border-color: #2563eb;
-            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
-        }
-
-        .btn-login {
-            width: 100%;
-            padding: 12px;
-            background-color: #2563eb;
-            color: white;
-            border: none;
-            border-radius: 6px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            margin-top: 10px;
-        }
-
-        .btn-login:hover {
-            background-color: #1d4ed8;
-        }
-
-        .footer-text {
-            margin-top: 20px;
-            font-size: 12px;
-            color: #9ca3af;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background: linear-gradient(135deg, #1f2937, #111827); height: 100vh; display: flex; justify-content: center; align-items: center; }
+        .login-card { background: #ffffff; padding: 40px; border-radius: 12px; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3); width: 100%; max-width: 400px; text-align: center; }
+        .login-card h2 { color: #1f2937; margin-bottom: 10px; font-size: 24px; }
+        .login-card p { color: #6b7280; margin-bottom: 30px; font-size: 14px; }
+        .input-group { margin-bottom: 20px; text-align: left; }
+        .input-group label { display: block; margin-bottom: 8px; color: #374151; font-weight: 600; font-size: 14px; }
+        .input-group input { width: 100%; padding: 12px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 14px; outline: none; transition: border-color 0.3s; }
+        .input-group input:focus { border-color: #2563eb; box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1); }
+        .btn-login { width: 100%; padding: 12px; background-color: #2563eb; color: white; border: none; border-radius: 6px; font-size: 16px; font-weight: 600; cursor: pointer; transition: background-color 0.3s; margin-top: 10px; }
+        .btn-login:hover { background-color: #1d4ed8; }
+        .error-msg { display: none; background: #fee2e2; color: #991b1b; padding: 10px; border-radius: 6px; font-size: 13px; margin-bottom: 15px; }
+        .footer-text { margin-top: 20px; font-size: 12px; color: #9ca3af; }
     </style>
 </head>
 <body>
@@ -101,7 +26,9 @@
     <h2>🛠️ Manotas Reparations</h2>
     <p>Inicie sesión para acceder al sistema</p>
 
-    <form action="dashboard.html" method="GET">
+    <div id="errorBox" class="error-msg"></div>
+
+    <form id="loginForm">
         <div class="input-group">
             <label for="usuario">Usuario</label>
             <input type="text" id="usuario" name="usuario" placeholder="Ingrese su usuario" required>
@@ -120,5 +47,30 @@
     </div>
 </div>
 
+<script>
+    document.getElementById('loginForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const errorBox = document.getElementById('errorBox');
+        errorBox.style.display = 'none';
+
+        const usuario = document.getElementById('usuario').value.trim();
+        const password = document.getElementById('password').value.trim();
+
+        const res = await fetch('/api/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: new URLSearchParams({ usuario, password })
+        });
+
+        const data = await res.json();
+        if (data.ok) {
+            sessionStorage.setItem('usuarioActivo', data.usuario);
+            window.location.href = 'dashboard.html';
+        } else {
+            errorBox.textContent = data.mensaje || 'Credenciales incorrectas';
+            errorBox.style.display = 'block';
+        }
+    });
+</script>
 </body>
 </html>
